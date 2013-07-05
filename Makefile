@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-REVISION=	20130621
+REVISION=	20130705
 DISTNAME=	liveimage-pkgs-nonx86-${REVISION}
 CATEGORIES=	meta-pkgs
 MASTER_SITES=	# empty
@@ -134,11 +134,15 @@ DEPENDS+=	aview-[0-9]*:../../graphics/aview
 DEPENDS+=	evince-[0-9]*:../../print/evince
 DEPENDS+=	epdfview-[0-9]*:../../print/epdfview
 
+# documents
+DEPENDS+=	${PYPKGPREFIX}-sphinx-[0-9]*:../../textproc/py-sphinx
+
 # restricted
 #DEPENDS+=	mplayer-[0-9]*:../../multimedia/mplayer
 #DEPENDS+=	xv-[0-9]*:../../graphics/xv
 
 META_PACKAGE=	yes
 
+.include "../../lang/python/pyversion.mk"
 .include "../../lang/ruby/rubyversion.mk"
 .include "../../mk/bsd.pkg.mk"
