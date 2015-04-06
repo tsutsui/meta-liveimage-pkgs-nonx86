@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-REVISION=	20141123
+REVISION=	20150406
 DISTNAME=	liveimage-pkgs-nonx86-${REVISION}
 CATEGORIES=	meta-pkgs
 MASTER_SITES=	# empty
@@ -27,7 +27,6 @@ DEPENDS+=	medit-[0-9]*:../../editors/medit
 #DEPENDS+=	firefox-[0-9]*:../../www/firefox
 #DEPENDS+=	firefox-l10n-[0-9]*:../../www/firefox-l10n
 #DEPENDS+=	gnash-[0-9]*:../../multimedia/gnash
-PKG_OPTIONS.dillo=inet6 ssl
 DEPENDS+=	dillo-[0-9]*:../../www/dillo
 
 # fonts
@@ -37,9 +36,17 @@ DEPENDS+=	ipafont-[0-9]*:../../fonts/ipafont
 # window manager
 DEPENDS+=	jwm-[0-9]*:../../wm/jwm
 
+# multimedia
+#DEPENDS+=	alsa-utils-[0-9]*:../../audio/alsa-utils
+#DEPENDS+=	alsa-plugins-oss-[0-9]*:../../audio/alsa-plugins-oss
+DEPENDS+=	mpg123-[0-9]*:../../audio/mpg123
+DEPENDS+=	lame-[0-9]*:../../audio/lame
+
 # Japanese input method
 #  ibus
 DEPENDS+=	ibus-[0-9]*:../../inputmethod/ibus
+# requred icons by gtk3+
+DEPENDS+=	adwaita-icon-theme-[0-9]*:../../graphics/adwaita-icon-theme
 #  mozc
 # XXX: fails in devel/protobuf on arm
 #DEPENDS+=	ibus-mozc-[0-9]*:../../inputmethod/ibus-mozc
@@ -53,12 +60,8 @@ DEPENDS+=	ibus-anthy-[0-9]*:../../inputmethod/ibus-anthy
 
 # terminal emulators
 DEPENDS+=	kterm-[0-9]*:../../x11/kterm
-PKG_OPTIONS.mlterm=ibus mlterm-fb
+PKG_OPTIONS.mlterm=ibus cairo fribidi gdk_pixbuf2 xft2 mlterm-fb
 DEPENDS+=	mlterm-[0-9]*:../../x11/mlterm
-
-# alsa (for mikutter notification voice)
-#DEPENDS+=	alsa-utils-[0-9]*:../../audio/alsa-utils
-#DEPENDS+=	alsa-plugins-oss-[0-9]*:../../audio/alsa-plugins-oss
 
 # mikutter
 DEPENDS+=	${RUBY_PKGPREFIX}-mikutter-[0-9]*:../../net/mikutter
@@ -85,6 +88,9 @@ DEPENDS+=	${RUBY_PKGPREFIX}-tw-[0-9]*:../../net/ruby-tw
 # uim
 DEPENDS+=	uim-[0-9]*:../../inputmethod/uim
 DEPENDS+=	uim-elisp-[0-9]*:../../inputmethod/uim-elisp
+# wnn
+DEPENDS+=	ja-FreeWnn-lib-[0-9]*:../../inputmethod/ja-freewnn-lib
+DEPENDS+=	ja-FreeWnn-server-[0-9]*:../../inputmethod/ja-freewnn-server
 
 # wm
 DEPENDS+=	awesome-[0-9]*:../../wm/awesome
@@ -105,6 +111,7 @@ DEPENDS+=	migu-ttf-[0-9]*:../../fonts/migu-ttf
 
 # scm
 DEPENDS+=	git-base-[0-9]*:../../devel/git-base
+DEPENDS+=	git-docs-[0-9]*:../../devel/git-docs
 DEPENDS+=	subversion-base-[0-9]*:../../devel/subversion-base
 DEPENDS+=	fossil-[0-9]*:../../devel/fossil
 DEPENDS+=	mercurial-[0-9]*:../../devel/mercurial
@@ -124,6 +131,7 @@ DEPENDS+=	cdrtools-[0-9]*:../../sysutils/cdrtools
 # editors
 DEPENDS+=	bvi-[0-9]*:../../editors/bvi
 DEPENDS+=	gedit-[0-9]*:../../editors/gedit
+DEPENDS+=	leafpad-[0-9]*:../../editors/leafpad
 DEPENDS+=	nano-[0-9]*:../../editors/nano
 DEPENDS+=	vim-[0-9]*:../../editors/vim
 
@@ -175,6 +183,7 @@ DEPENDS+=	${RUBY_PKGPREFIX}-rabbit-[0-9]*:../../graphics/rabbit
 # restricted
 #DEPENDS+=	mplayer-[0-9]*:../../multimedia/mplayer
 #DEPENDS+=	xv-[0-9]*:../../graphics/xv
+#DEPENDS+=	ricty-ttf-[0-9]*:../../fonts/ricty-ttf
 
 META_PACKAGE=	yes
 
