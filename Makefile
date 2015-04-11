@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-REVISION=	20150406
+REVISION=	20150411
 DISTNAME=	liveimage-pkgs-nonx86-${REVISION}
 CATEGORIES=	meta-pkgs
 MASTER_SITES=	# empty
@@ -28,6 +28,7 @@ DEPENDS+=	medit-[0-9]*:../../editors/medit
 #DEPENDS+=	firefox-l10n-[0-9]*:../../www/firefox-l10n
 #DEPENDS+=	gnash-[0-9]*:../../multimedia/gnash
 DEPENDS+=	dillo-[0-9]*:../../www/dillo
+DEPENDS+=	w3m-[0-9]*:../../www/w3m
 
 # fonts
 DEPENDS+=	vlgothic-ttf-[0-9]*:../../fonts/vlgothic-ttf
@@ -70,12 +71,13 @@ DEPENDS+=	${RUBY_PKGPREFIX}-mikutter-[0-9]*:../../net/mikutter
 PKG_OPTIONS.onscripter=onscripter-pda
 DEPENDS+=	onscripter-[0-9]*:../../games/onscripter
 
-# for onscripter game archives
+# archivers for onscripter
 DEPENDS+=	lhasa-[0-9]*:../../archivers/lhasa
 DEPENDS+=	unzip-[0-9]*:../../archivers/unzip
 
 # for text console demo
 DEPENDS+=	${RUBY_PKGPREFIX}-tw-[0-9]*:../../net/ruby-tw
+DEPENDS+=	mozilla-rootcerts-[0-9]*:../../security/mozilla-rootcerts
 
 # pkgin
 #DEPENDS+=	pkgin-[0-9]*:../../pkgtools/pkgin
@@ -91,6 +93,9 @@ DEPENDS+=	uim-elisp-[0-9]*:../../inputmethod/uim-elisp
 # wnn
 DEPENDS+=	ja-FreeWnn-lib-[0-9]*:../../inputmethod/ja-freewnn-lib
 DEPENDS+=	ja-FreeWnn-server-[0-9]*:../../inputmethod/ja-freewnn-server
+# canna
+DEPENDS+=	Canna-lib-[0-9]*:../../inputmethod/canna-lib
+DEPENDS+=	Canna-[0-9]*:../../inputmethod/canna
 
 # wm
 DEPENDS+=	awesome-[0-9]*:../../wm/awesome
@@ -127,6 +132,7 @@ DEPENDS+=	sudo-[0-9]*:../../security/sudo
 # tools
 DEPENDS+=	nkf-[0-9]*:../../converters/nkf
 DEPENDS+=	cdrtools-[0-9]*:../../sysutils/cdrtools
+DEPENDS+=	mtools-[0-9]*:../../sysutils/mtools
 
 # editors
 DEPENDS+=	bvi-[0-9]*:../../editors/bvi
@@ -136,11 +142,20 @@ DEPENDS+=	nano-[0-9]*:../../editors/nano
 DEPENDS+=	vim-[0-9]*:../../editors/vim
 
 # network
+DEPENDS+=	curl-[0-9]*:../../www/curl
 DEPENDS+=	rsync-[0-9]*:../../net/rsync
 DEPENDS+=	samba-[0-9]*:../../net/samba
+DEPENDS+=	wget-[0-9]*:../../net/wget
+DEPENDS+=	wireshark-[0-9]*:../../net/wireshark
 
 # for demonstration
 DEPENDS+=	xnp2-[0-9]*:../../emulators/xnp2
+
+# archivers
+#DEPENDS+=	lhasa-[0-9]*:../../archivers/lhasa
+DEPENDS+=	unrar-[0-9]*:../../archivers/unrar
+#DEPENDS+=	unzip-[0-9]*:../../archivers/unzip
+DEPENDS+=	zip-[0-9]*:../../archivers/zip
 
 # for xm6i
 # xm6i for non-x86 is not available yet
@@ -164,8 +179,6 @@ DEPENDS+=	ImageMagick-[0-9]*:../../graphics/ImageMagick
 
 # for text console demo
 DEPENDS+=	sl-[0-9]*:../../games/sl
-DEPENDS+=	w3m-[0-9]*:../../www/w3m
-DEPENDS+=	curl-[0-9]*:../../www/curl
 DEPENDS+=	aview-[0-9]*:../../graphics/aview
 #  for sayaka (PHP twitter client)
 DEPENDS+=	${PHP_PKG_PREFIX}-pdo-[0-9]*:../../databases/php-pdo_sqlite
@@ -181,9 +194,9 @@ DEPENDS+=	${PYPKGPREFIX}-sphinx-[0-9]*:../../textproc/py-sphinx
 DEPENDS+=	${RUBY_PKGPREFIX}-rabbit-[0-9]*:../../graphics/rabbit
 
 # restricted
-#DEPENDS+=	mplayer-[0-9]*:../../multimedia/mplayer
-#DEPENDS+=	xv-[0-9]*:../../graphics/xv
-#DEPENDS+=	ricty-ttf-[0-9]*:../../fonts/ricty-ttf
+DEPENDS+=	mplayer-[0-9]*:../../multimedia/mplayer
+DEPENDS+=	xv-[0-9]*:../../graphics/xv
+DEPENDS+=	ricty-ttf-[0-9]*:../../fonts/ricty-ttf
 
 META_PACKAGE=	yes
 
