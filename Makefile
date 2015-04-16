@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-REVISION=	20150411
+REVISION=	20150416
 DISTNAME=	liveimage-pkgs-nonx86-${REVISION}
 CATEGORIES=	meta-pkgs
 MASTER_SITES=	# empty
