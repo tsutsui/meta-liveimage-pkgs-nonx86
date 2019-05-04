@@ -20,7 +20,7 @@ DEPENDS+=	tcsh-[0-9]*:../../shells/tcsh
 DEPENDS+=	zsh-[0-9]*:../../shells/zsh
 
 # editors
-DEPENDS+=	emacs-[0-9]*:../../editors/emacs
+#DEPENDS+=	emacs-[0-9]*:../../editors/emacs
 DEPENDS+=	medit-[0-9]*:../../editors/medit
 
 # browser and plugin
@@ -56,7 +56,7 @@ DEPENDS+=	adwaita-icon-theme-[0-9]*:../../graphics/adwaita-icon-theme
 #DEPENDS+=	mozc-elisp-[0-9]*:../../inputmethod/mozc-elisp
 #  anthy
 DEPENDS+=	anthy-[0-9]*:../../inputmethod/anthy
-DEPENDS+=	anthy-elisp-[0-9]*:../../inputmethod/anthy-elisp
+#DEPENDS+=	anthy-elisp-[0-9]*:../../inputmethod/anthy-elisp
 DEPENDS+=	ibus-anthy-[0-9]*:../../inputmethod/ibus-anthy
 
 # terminal emulators
@@ -89,7 +89,7 @@ DEPENDS+=	mozilla-rootcerts-[0-9]*:../../security/mozilla-rootcerts
 # inputmethod
 # uim
 DEPENDS+=	uim-[0-9]*:../../inputmethod/uim
-DEPENDS+=	uim-elisp-[0-9]*:../../inputmethod/uim-elisp
+#DEPENDS+=	uim-elisp-[0-9]*:../../inputmethod/uim-elisp
 # wnn
 DEPENDS+=	ja-FreeWnn-lib-[0-9]*:../../inputmethod/ja-freewnn-lib
 DEPENDS+=	ja-FreeWnn-server-[0-9]*:../../inputmethod/ja-freewnn-server
@@ -167,13 +167,13 @@ DEPENDS+=	wxGTK30-[0-9]*:../../x11/wxGTK30
 #DEPENDS+=	qemu-[0-9]*:../../emulators/qemu
 DEPENDS+=	gxemul-[0-9]*:../../emulators/gxemul
 DEPENDS+=	tme-[0-9]*:../../emulators/tme
-DEPENDS+=	simh-[0-9]*:../../emulators/simh
+#DEPENDS+=	simh-[0-9]*:../../emulators/simh
 
 # graphics
 DEPENDS+=	xli-[0-9]*:../../graphics/xli
 DEPENDS+=	libsixel-[0-9]*:../../graphics/libsixel
 DEPENDS+=	netpbm-[0-9]*:../../graphics/netpbm
-DEPENDS+=	gimp-[0-9]*:../../graphics/gimp
+#DEPENDS+=	gimp-[0-9]*:../../graphics/gimp
 DEPENDS+=	ImageMagick-[0-9]*:../../graphics/ImageMagick
 
 # for text console demo
