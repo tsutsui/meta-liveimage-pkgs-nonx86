@@ -19,9 +19,19 @@ DEPENDS+=	bash-[0-9]*:../../shells/bash
 DEPENDS+=	tcsh-[0-9]*:../../shells/tcsh
 DEPENDS+=	zsh-[0-9]*:../../shells/zsh
 
-# editors
-#DEPENDS+=	emacs-[0-9]*:../../editors/emacs
-DEPENDS+=	medit-[0-9]*:../../editors/medit
+# terminal emulators
+DEPENDS+=	kterm-[0-9]*:../../x11/kterm
+PKG_OPTIONS.mlterm=ibus cairo fribidi gdk_pixbuf2 xft2 mlterm-fb
+DEPENDS+=	mlterm-[0-9]*:../../x11/mlterm
+
+# vala sayaka (twitter client)
+DEPENDS+=	sayaka-[0-9]*:../../net/sayaka
+# for nanotodon
+DEPENDS+=	ncursesw-[0-9]*:../../devel/ncursesw
+DEPENDS+=	json-c-[0-9]*:../../textproc/json-c
+DEPENDS+=	curl-[0-9]*:../../www/curl
+
+DEPENDS+=	rsync-[0-9]*:../../net/rsync
 
 # browser and plugin
 #DEPENDS+=	firefox-[0-9]*:../../www/firefox
@@ -37,11 +47,31 @@ DEPENDS+=	ipafont-[0-9]*:../../fonts/ipafont
 DEPENDS+=	jwm-[0-9]*:../../wm/jwm
 DEPENDS+=	wm-icons-[0-9]*:../../graphics/wm-icons
 
+# for text console demo
+DEPENDS+=	${RUBY_PKGPREFIX}-tw-[0-9]*:../../net/ruby-tw
+DEPENDS+=	sl-[0-9]*:../../games/sl
+DEPENDS+=	aview-[0-9]*:../../graphics/aview
+
+# graphics
+DEPENDS+=	xv-[0-9]*:../../graphics/xv
+DEPENDS+=	xli-[0-9]*:../../graphics/xli
+DEPENDS+=	libsixel-[0-9]*:../../graphics/libsixel
+DEPENDS+=	netpbm-[0-9]*:../../graphics/netpbm
+#DEPENDS+=	gimp-[0-9]*:../../graphics/gimp
+DEPENDS+=	ImageMagick-[0-9]*:../../graphics/ImageMagick
+
+DEPENDS+=	git-base-[0-9]*:../../devel/git-base
+DEPENDS+=	git-docs-[0-9]*:../../devel/git-docs
+DEPENDS+=	mozilla-rootcerts-[0-9]*:../../security/mozilla-rootcerts
+
+# mikutter
+DEPENDS+=	${RUBY_PKGPREFIX}-mikutter-[0-9]*:../../net/mikutter
+
 # multimedia
 #DEPENDS+=	alsa-utils-[0-9]*:../../audio/alsa-utils
 #DEPENDS+=	alsa-plugins-oss-[0-9]*:../../audio/alsa-plugins-oss
-DEPENDS+=	mpg123-[0-9]*:../../audio/mpg123
-DEPENDS+=	lame-[0-9]*:../../audio/lame
+#DEPENDS+=	mpg123-[0-9]*:../../audio/mpg123
+#DEPENDS+=	lame-[0-9]*:../../audio/lame
 
 # Japanese input method
 #  ibus
@@ -59,14 +89,6 @@ DEPENDS+=	anthy-[0-9]*:../../inputmethod/anthy
 #DEPENDS+=	anthy-elisp-[0-9]*:../../inputmethod/anthy-elisp
 DEPENDS+=	ibus-anthy-[0-9]*:../../inputmethod/ibus-anthy
 
-# terminal emulators
-DEPENDS+=	kterm-[0-9]*:../../x11/kterm
-PKG_OPTIONS.mlterm=ibus cairo fribidi gdk_pixbuf2 xft2 mlterm-fb
-DEPENDS+=	mlterm-[0-9]*:../../x11/mlterm
-
-# mikutter
-DEPENDS+=	${RUBY_PKGPREFIX}-mikutter-[0-9]*:../../net/mikutter
-
 # for demonstration
 #PKG_OPTIONS.onscripter=onscripter-pda
 DEPENDS+=	onscripter-[0-9]*:../../games/onscripter
@@ -74,10 +96,6 @@ DEPENDS+=	onscripter-[0-9]*:../../games/onscripter
 # archivers for onscripter
 DEPENDS+=	lhasa-[0-9]*:../../archivers/lhasa
 DEPENDS+=	unzip-[0-9]*:../../archivers/unzip
-
-# for text console demo
-DEPENDS+=	${RUBY_PKGPREFIX}-tw-[0-9]*:../../net/ruby-tw
-DEPENDS+=	mozilla-rootcerts-[0-9]*:../../security/mozilla-rootcerts
 
 # pkgin
 #DEPENDS+=	pkgin-[0-9]*:../../pkgtools/pkgin
@@ -115,11 +133,9 @@ DEPENDS+=	inconsolata-ttf-[0-9]*:../../fonts/inconsolata-ttf
 DEPENDS+=	migu-ttf-[0-9]*:../../fonts/migu-ttf
 
 # scm
-DEPENDS+=	git-base-[0-9]*:../../devel/git-base
-DEPENDS+=	git-docs-[0-9]*:../../devel/git-docs
 DEPENDS+=	subversion-base-[0-9]*:../../devel/subversion-base
-DEPENDS+=	fossil-[0-9]*:../../devel/fossil
-DEPENDS+=	mercurial-[0-9]*:../../devel/mercurial
+#DEPENDS+=	fossil-[0-9]*:../../devel/fossil
+#DEPENDS+=	mercurial-[0-9]*:../../devel/mercurial
 
 # pkgtools
 DEPENDS+=	pkgdiff-[0-9]*:../../pkgtools/pkgdiff
@@ -136,6 +152,8 @@ DEPENDS+=	cdrtools-[0-9]*:../../sysutils/cdrtools
 DEPENDS+=	mtools-[0-9]*:../../sysutils/mtools
 
 # editors
+#DEPENDS+=	emacs-[0-9]*:../../editors/emacs
+DEPENDS+=	medit-[0-9]*:../../editors/medit
 DEPENDS+=	bvi-[0-9]*:../../editors/bvi
 DEPENDS+=	gedit-[0-9]*:../../editors/gedit
 DEPENDS+=	leafpad-[0-9]*:../../editors/leafpad
@@ -143,21 +161,21 @@ DEPENDS+=	nano-[0-9]*:../../editors/nano
 DEPENDS+=	vim-[0-9]*:../../editors/vim
 
 # network
-DEPENDS+=	curl-[0-9]*:../../www/curl
-DEPENDS+=	rsync-[0-9]*:../../net/rsync
+#DEPENDS+=	curl-[0-9]*:../../www/curl
+#DEPENDS+=	rsync-[0-9]*:../../net/rsync
 DEPENDS+=	samba-[0-9]*:../../net/samba
 DEPENDS+=	wget-[0-9]*:../../net/wget
 #DEPENDS+=	wireshark-[0-9]*:../../net/wireshark
-
-# for demonstration
-DEPENDS+=	xnp2-[0-9]*:../../emulators/xnp2
-DEPENDS+=	PC6001VX-[0-9]*:../../emulators/PC6001VX
 
 # archivers
 #DEPENDS+=	lhasa-[0-9]*:../../archivers/lhasa
 DEPENDS+=	unrar-[0-9]*:../../archivers/unrar
 #DEPENDS+=	unzip-[0-9]*:../../archivers/unzip
 DEPENDS+=	zip-[0-9]*:../../archivers/zip
+
+# for demonstration
+DEPENDS+=	xnp2-[0-9]*:../../emulators/xnp2
+DEPENDS+=	PC6001VX-[0-9]*:../../emulators/PC6001VX
 
 # for xm6i
 DEPENDS+=	wxGTK30-[0-9]*:../../x11/wxGTK30
@@ -169,37 +187,21 @@ DEPENDS+=	gxemul-[0-9]*:../../emulators/gxemul
 DEPENDS+=	tme-[0-9]*:../../emulators/tme
 #DEPENDS+=	simh-[0-9]*:../../emulators/simh
 
-# graphics
-DEPENDS+=	xli-[0-9]*:../../graphics/xli
-DEPENDS+=	libsixel-[0-9]*:../../graphics/libsixel
-DEPENDS+=	netpbm-[0-9]*:../../graphics/netpbm
-#DEPENDS+=	gimp-[0-9]*:../../graphics/gimp
-DEPENDS+=	ImageMagick-[0-9]*:../../graphics/ImageMagick
-
-# for text console demo
-DEPENDS+=	sl-[0-9]*:../../games/sl
-DEPENDS+=	aview-[0-9]*:../../graphics/aview
-# vala sayaka (twitter client)
-DEPENDS+=	sayaka-[0-9]*:../../net/sayaka
-# for nanotodon
-DEPENDS+=	ncursesw-[0-9]*:../../devel/ncursesw
-DEPENDS+=	json-c-[0-9]*:../../textproc/json-c
- 
 # pdf viewers
 DEPENDS+=	evince-[0-9]*:../../print/evince
 DEPENDS+=	epdfview-[0-9]*:../../print/epdfview
 
 # documents
-DEPENDS+=	${PYPKGPREFIX}-sphinx-[0-9]*:../../textproc/py-sphinx
-DEPENDS+=	${RUBY_PKGPREFIX}-rabbit-[0-9]*:../../graphics/rabbit
+#DEPENDS+=	${PYPKGPREFIX}-sphinx-[0-9]*:../../textproc/py-sphinx
+#DEPENDS+=	${RUBY_PKGPREFIX}-rabbit-[0-9]*:../../graphics/rabbit
 
 # restricted
 DEPENDS+=	mplayer-[0-9]*:../../multimedia/mplayer
-DEPENDS+=	xv-[0-9]*:../../graphics/xv
+#DEPENDS+=	xv-[0-9]*:../../graphics/xv
 DEPENDS+=	ricty-ttf-[0-9]*:../../fonts/ricty-ttf
 
 META_PACKAGE=	yes
 
-.include "../../lang/python/pyversion.mk"
+#.include "../../lang/python/pyversion.mk"
 .include "../../lang/ruby/rubyversion.mk"
 .include "../../mk/bsd.pkg.mk"
