@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-REVISION=	20150416
+REVISION=	20190504
 DISTNAME=	liveimage-pkgs-nonx86-${REVISION}
 CATEGORIES=	meta-pkgs
 MASTER_SITES=	# empty
@@ -11,7 +11,7 @@ MAINTAINER=	tsutsui@NetBSD.org
 COMMENT=	Meta-package to build binaries for non-x86 ports
 
 #
-# packages used by the NetBSD/hpcarm W-ZERO3 Teokure Live Image
+# packages used by non-x86 NetBSD machines
 #
 
 # shells
@@ -26,7 +26,6 @@ DEPENDS+=	medit-[0-9]*:../../editors/medit
 # browser and plugin
 #DEPENDS+=	firefox-[0-9]*:../../www/firefox
 #DEPENDS+=	firefox-l10n-[0-9]*:../../www/firefox-l10n
-#DEPENDS+=	gnash-[0-9]*:../../multimedia/gnash
 DEPENDS+=	dillo-[0-9]*:../../www/dillo
 DEPENDS+=	w3m-[0-9]*:../../www/w3m
 
@@ -36,6 +35,7 @@ DEPENDS+=	ipafont-[0-9]*:../../fonts/ipafont
 
 # window manager
 DEPENDS+=	jwm-[0-9]*:../../wm/jwm
+DEPENDS+=	wm-icons-[0-9]*:../../graphics/wm-icons
 
 # multimedia
 #DEPENDS+=	alsa-utils-[0-9]*:../../audio/alsa-utils
@@ -68,7 +68,7 @@ DEPENDS+=	mlterm-[0-9]*:../../x11/mlterm
 DEPENDS+=	${RUBY_PKGPREFIX}-mikutter-[0-9]*:../../net/mikutter
 
 # for demonstration
-PKG_OPTIONS.onscripter=onscripter-pda
+#PKG_OPTIONS.onscripter=onscripter-pda
 DEPENDS+=	onscripter-[0-9]*:../../games/onscripter
 
 # archivers for onscripter
@@ -123,7 +123,8 @@ DEPENDS+=	mercurial-[0-9]*:../../devel/mercurial
 
 # pkgtools
 DEPENDS+=	pkgdiff-[0-9]*:../../pkgtools/pkgdiff
-DEPENDS+=	pkglint-[0-9]*:../../pkgtools/pkglint
+#DEPENDS+=	pkglint-[0-9]*:../../pkgtools/pkglint
+DEPENDS+=	pkglint4-[0-9]*:../../pkgtools/pkglint4
 DEPENDS+=	pkg_rolling-replace-[0-9]*:../../pkgtools/pkg_rolling-replace
 
 # admin tools
@@ -146,10 +147,11 @@ DEPENDS+=	curl-[0-9]*:../../www/curl
 DEPENDS+=	rsync-[0-9]*:../../net/rsync
 DEPENDS+=	samba-[0-9]*:../../net/samba
 DEPENDS+=	wget-[0-9]*:../../net/wget
-DEPENDS+=	wireshark-[0-9]*:../../net/wireshark
+#DEPENDS+=	wireshark-[0-9]*:../../net/wireshark
 
 # for demonstration
 DEPENDS+=	xnp2-[0-9]*:../../emulators/xnp2
+DEPENDS+=	PC6001VX-[0-9]*:../../emulators/PC6001VX
 
 # archivers
 #DEPENDS+=	lhasa-[0-9]*:../../archivers/lhasa
@@ -158,8 +160,7 @@ DEPENDS+=	unrar-[0-9]*:../../archivers/unrar
 DEPENDS+=	zip-[0-9]*:../../archivers/zip
 
 # for xm6i
-# xm6i for non-x86 is not available yet
-#DEPENDS+=	wxGTK28-[0-9]*:../../x11/wxGTK28
+DEPENDS+=	wxGTK30-[0-9]*:../../x11/wxGTK30
 
 # emulators
 # XXX: qemu build requires too much (>512MB) memory
@@ -173,17 +174,16 @@ DEPENDS+=	xli-[0-9]*:../../graphics/xli
 DEPENDS+=	libsixel-[0-9]*:../../graphics/libsixel
 DEPENDS+=	netpbm-[0-9]*:../../graphics/netpbm
 DEPENDS+=	gimp-[0-9]*:../../graphics/gimp
-# XXX www/webkit-gtk complains #error "Not supported ARM architecture"
-#DEPENDS+=	shotwell-[0-9]*:../../graphics/shotwell
 DEPENDS+=	ImageMagick-[0-9]*:../../graphics/ImageMagick
 
 # for text console demo
 DEPENDS+=	sl-[0-9]*:../../games/sl
 DEPENDS+=	aview-[0-9]*:../../graphics/aview
-#  for sayaka (PHP twitter client)
-DEPENDS+=	${PHP_PKG_PREFIX}-pdo-[0-9]*:../../databases/php-pdo_sqlite
-DEPENDS+=	${PHP_PKG_PREFIX}-json-[0-9]*:../../textproc/php-json
-DEPENDS+=	${PHP_PKG_PREFIX}-curl-[0-9]*:../../www/php-curl
+# vala sayaka (twitter client)
+DEPENDS+=	sayaka-[0-9]*:../../net/sayaka
+# for nanotodon
+DEPENDS+=	ncursesw-[0-9]*:../../devel/ncursesw
+DEPENDS+=	json-c-[0-9]*:../../textproc/json-c
  
 # pdf viewers
 DEPENDS+=	evince-[0-9]*:../../print/evince
@@ -200,7 +200,6 @@ DEPENDS+=	ricty-ttf-[0-9]*:../../fonts/ricty-ttf
 
 META_PACKAGE=	yes
 
-.include "../../lang/php/phpversion.mk"
 .include "../../lang/python/pyversion.mk"
 .include "../../lang/ruby/rubyversion.mk"
 .include "../../mk/bsd.pkg.mk"
