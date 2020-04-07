@@ -1,7 +1,7 @@
 # $NetBSD$
 #
 
-REVISION=	20190504
+REVISION=	20200301
 DISTNAME=	liveimage-pkgs-nonx86-${REVISION}
 CATEGORIES=	meta-pkgs
 MASTER_SITES=	# empty
@@ -15,42 +15,43 @@ COMMENT=	Meta-package to build binaries for non-x86 ports
 #
 
 # shells
-DEPENDS+=	bash-[0-9]*:../../shells/bash
 DEPENDS+=	tcsh-[0-9]*:../../shells/tcsh
 DEPENDS+=	zsh-[0-9]*:../../shells/zsh
-
-# terminal emulators
-DEPENDS+=	kterm-[0-9]*:../../x11/kterm
-PKG_OPTIONS.mlterm=ibus cairo fribidi gdk_pixbuf2 xft2 mlterm-fb
-DEPENDS+=	mlterm-[0-9]*:../../x11/mlterm
+DEPENDS+=	bash-[0-9]*:../../shells/bash
 
 # vala sayaka (twitter client)
 DEPENDS+=	sayaka-[0-9]*:../../net/sayaka
-# for nanotodon
-DEPENDS+=	ncursesw-[0-9]*:../../devel/ncursesw
-DEPENDS+=	json-c-[0-9]*:../../textproc/json-c
-DEPENDS+=	curl-[0-9]*:../../www/curl
+# nanotodon
+DEPENDS+=	nanotodon-[0-9]*:../../net/nanotodon
 
+# terminal emulators
+DEPENDS+=	kterm-[0-9]*:../../x11/kterm
+PKG_OPTIONS.mlterm=cairo fribidi gdk_pixbuf2 xft2 mlterm-fb
+DEPENDS+=	mlterm-[0-9]*:../../x11/mlterm
+
+# network
 DEPENDS+=	rsync-[0-9]*:../../net/rsync
+DEPENDS+=	wget-[0-9]*:../../net/wget
+
+# basic fonts
+DEPENDS+=	vlgothic-ttf-[0-9]*:../../fonts/vlgothic-ttf
+DEPENDS+=	ipafont-[0-9]*:../../fonts/ipafont
+DEPENDS+=	freefont-ttf-[0-9]*:../../fonts/freefont-ttf
+DEPENDS+=	unifont-[0-9]*:../../fonts/unifont
+
+# VCS
+DEPENDS+=	git-base-[0-9]*:../../devel/git-base
+DEPENDS+=	git-docs-[0-9]*:../../devel/git-docs
+
+# window manager
+DEPENDS+=	jwm-[0-9]*:../../wm/jwm
+DEPENDS+=	wm-icons-[0-9]*:../../graphics/wm-icons
 
 # browser and plugin
 #DEPENDS+=	firefox-[0-9]*:../../www/firefox
 #DEPENDS+=	firefox-l10n-[0-9]*:../../www/firefox-l10n
 DEPENDS+=	dillo-[0-9]*:../../www/dillo
 DEPENDS+=	w3m-[0-9]*:../../www/w3m
-
-# fonts
-DEPENDS+=	vlgothic-ttf-[0-9]*:../../fonts/vlgothic-ttf
-DEPENDS+=	ipafont-[0-9]*:../../fonts/ipafont
-
-# window manager
-DEPENDS+=	jwm-[0-9]*:../../wm/jwm
-DEPENDS+=	wm-icons-[0-9]*:../../graphics/wm-icons
-
-# for text console demo
-DEPENDS+=	${RUBY_PKGPREFIX}-tw-[0-9]*:../../net/ruby-tw
-DEPENDS+=	sl-[0-9]*:../../games/sl
-DEPENDS+=	aview-[0-9]*:../../graphics/aview
 
 # graphics
 DEPENDS+=	xv-[0-9]*:../../graphics/xv
@@ -60,9 +61,18 @@ DEPENDS+=	netpbm-[0-9]*:../../graphics/netpbm
 #DEPENDS+=	gimp-[0-9]*:../../graphics/gimp
 DEPENDS+=	ImageMagick-[0-9]*:../../graphics/ImageMagick
 
-DEPENDS+=	git-base-[0-9]*:../../devel/git-base
-DEPENDS+=	git-docs-[0-9]*:../../devel/git-docs
-DEPENDS+=	mozilla-rootcerts-[0-9]*:../../security/mozilla-rootcerts
+# Traditional input method
+# wnn
+DEPENDS+=	ja-FreeWnn-lib-[0-9]*:../../inputmethod/ja-freewnn-lib
+DEPENDS+=	ja-FreeWnn-server-[0-9]*:../../inputmethod/ja-freewnn-server
+# canna
+DEPENDS+=	Canna-lib-[0-9]*:../../inputmethod/canna-lib
+DEPENDS+=	Canna-[0-9]*:../../inputmethod/canna
+
+# for text console demo
+DEPENDS+=	${RUBY_PKGPREFIX}-tw-[0-9]*:../../net/ruby-tw
+DEPENDS+=	sl-[0-9]*:../../games/sl
+DEPENDS+=	aview-[0-9]*:../../graphics/aview
 
 # mikutter
 DEPENDS+=	${RUBY_PKGPREFIX}-mikutter-[0-9]*:../../net/mikutter
@@ -108,12 +118,6 @@ DEPENDS+=	unzip-[0-9]*:../../archivers/unzip
 # uim
 DEPENDS+=	uim-[0-9]*:../../inputmethod/uim
 #DEPENDS+=	uim-elisp-[0-9]*:../../inputmethod/uim-elisp
-# wnn
-DEPENDS+=	ja-FreeWnn-lib-[0-9]*:../../inputmethod/ja-freewnn-lib
-DEPENDS+=	ja-FreeWnn-server-[0-9]*:../../inputmethod/ja-freewnn-server
-# canna
-DEPENDS+=	Canna-lib-[0-9]*:../../inputmethod/canna-lib
-DEPENDS+=	Canna-[0-9]*:../../inputmethod/canna
 
 # wm
 DEPENDS+=	awesome-[0-9]*:../../wm/awesome
@@ -126,7 +130,8 @@ DEPENDS+=	efont-unicode-[0-9]*:../../fonts/efont-unicode
 DEPENDS+=	jisx0212fonts-[0-9]*:../../fonts/jisx0212fonts
 DEPENDS+=	jisx0213fonts-[0-9]*:../../fonts/jisx0213fonts
 DEPENDS+=	ipaexfont-[0-9]*:../../fonts/ipaexfont
-DEPENDS+=	freefont-ttf-[0-9]*:../../fonts/freefont-ttf
+#DEPENDS+=	freefont-ttf-[0-9]*:../../fonts/freefont-ttf
+#DEPENDS+=	unifont-[0-9]*:../../fonts/unifont
 DEPENDS+=	takao-fonts-ttf-[0-9]*:../../fonts/takao-fonts-ttf
 # for ricty
 DEPENDS+=	inconsolata-ttf-[0-9]*:../../fonts/inconsolata-ttf
@@ -164,7 +169,7 @@ DEPENDS+=	vim-[0-9]*:../../editors/vim
 #DEPENDS+=	curl-[0-9]*:../../www/curl
 #DEPENDS+=	rsync-[0-9]*:../../net/rsync
 DEPENDS+=	samba-[0-9]*:../../net/samba
-DEPENDS+=	wget-[0-9]*:../../net/wget
+#DEPENDS+=	wget-[0-9]*:../../net/wget
 #DEPENDS+=	wireshark-[0-9]*:../../net/wireshark
 
 # archivers
@@ -188,7 +193,7 @@ DEPENDS+=	tme-[0-9]*:../../emulators/tme
 #DEPENDS+=	simh-[0-9]*:../../emulators/simh
 
 # pdf viewers
-DEPENDS+=	evince-[0-9]*:../../print/evince
+DEPENDS+=	evince-[0-9]*:../../print/evince3
 DEPENDS+=	epdfview-[0-9]*:../../print/epdfview
 
 # documents
